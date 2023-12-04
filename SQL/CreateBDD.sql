@@ -1,3 +1,18 @@
+-- #### Suppression des tables si elles existent ####
+DROP TABLE IF EXISTS appartenir;
+DROP TABLE IF EXISTS habiter;
+DROP TABLE IF EXISTS Historique_prix;
+DROP TABLE IF EXISTS Commande;
+DROP TABLE IF EXISTS Personnel;
+DROP TABLE IF EXISTS Adresse;
+DROP TABLE IF EXISTS Ville;
+DROP TABLE IF EXISTS Stock;
+DROP TABLE IF EXISTS Paiement;
+DROP TABLE IF EXISTS Client;
+DROP TABLE IF EXISTS Pays;
+
+
+-- #### Création des tables ####
 -- Table client
 CREATE TABLE Client(
    id_client INT,
