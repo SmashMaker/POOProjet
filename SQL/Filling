@@ -1,3 +1,4 @@
+-- Fill Client
 INSERT INTO Client (id_client, nom_client, prenom_client, date_naissance)
 VALUES
 (1, 'Tremblay', 'Camille', '1992-03-14'),
@@ -21,6 +22,8 @@ VALUES
 (19, 'Fischer', 'Maxime', '1979-11-11'),
 (20, 'Dumont', 'Anna', '1996-12-24');
 
+
+-- Fill Paiement
 INSERT INTO paiement (id_paiement, date_paiement, moyen_paiement, date_reglement, id_client)
 VALUES
 (1, '2022-12-24', 'Carte', '2022-12-26', 5),
@@ -44,6 +47,8 @@ VALUES
 (19, '2024-08-22', 'Espèces', '2024-08-22', 12),
 (20, '2024-10-07', 'Espèces', '2024-10-07', 8);
 
+
+-- Fill Stock
 INSERT INTO Stock (id_produit, nom_produit, ref_produit, designation, quantite, seuil_reappro, taux_tva)
 VALUES
 (1, 'Résistances électriques', 'RES-2022', 'RES-PRO-2022', 15, 5, 20),
@@ -67,6 +72,8 @@ VALUES
 (19, 'Cartes mémoire SD', 'SD-CARD-1234', 'SD-MEM-CARD-1234', 22, 5, 20),
 (20, 'Convertisseurs de tension', 'CONVERTER-5678', 'VOLT-CONVERTER-5678', 14, 5, 20);
 
+
+-- Fill Pays
 INSERT INTO pays (id_pays, nom_pays)
 VALUES
 (1, 'Allemagne'),
@@ -97,6 +104,8 @@ VALUES
 (26, 'Suède'),
 (27, 'Chypre');
 
+
+-- Fill Ville
 INSERT INTO Ville (id_ville, nom_ville, code_postal, id_pays)
 VALUES
 (1, 'Rouen', '76000',10),
@@ -120,6 +129,8 @@ VALUES
 (19, 'Elbeuf', '76500',10),
 (20, 'Yvetot', '76190',10); 
 
+
+-- Fill Adresse
 INSERT INTO Adresse (id_adresse, nom_adresse, livraison, facturation, id_ville)
 VALUES
 (1, '15 Rue Victor Hugo', 1, 1, 1),
@@ -163,6 +174,8 @@ VALUES
 (39, '4 Rue des Tilleuls', 1, 1, 17),
 (40, '3 Avenue Gambetta', 1, 1, 7);
 
+
+-- Fill Personnel
 INSERT INTO Personnel (id_personnel, nom_personnel, prenom_personnel, superieur_personnel, date_embauche, id_adresse)
 VALUES
 (1, 'Dubois', 'Martin', 'Camille', '2012-05-11', 5),
@@ -186,6 +199,8 @@ VALUES
 (19, 'Blanc', 'Florian', 'Maxime', '2014-07-31', 18),
 (20, 'Chevalier', 'Camille', NULL, '2012-05-11', 1);
 
+
+-- Fill Commande
 INSERT INTO Commande (id_commande, date_emission, date_livraison, quantite_article, total_article, total_ht, total_tva, total_ttc, id_paiement, id_client)
 VALUES
 (1, '2022-12-25', '2023-01-01', 9, 180, 180, 36, 216, 1, 5),
@@ -209,6 +224,8 @@ VALUES
 (19, '2024-08-23', '2024-08-30', 6, 9, 9, 1.8, 10.8, 19, 12),
 (20, '2024-10-08', '2024-10-15', 2, 28, 28, 5.6, 33.6, 20, 8);
 
+
+-- Fill Historique_prix
 INSERT INTO Historique_prix (id_historique, id_produit, prix_article, date_article)
 VALUES
 (1, 1, 0.25, '2022-12-01'),
@@ -232,6 +249,8 @@ VALUES
 (19, 19, 22, '2022-12-01'),
 (20, 20, 17, '2022-12-01');
 
+
+-- Fill Appartenire (Table intermédiaire entre Commande et Catalogue)
 INSERT INTO appartenir (id_commande, id_produit)
 VALUES
 (1, 18),
@@ -255,6 +274,8 @@ VALUES
 (19, 12),
 (20, 14);
 
+
+-- Fill  Habiter (Table intermédiaire entre Adresse et Client)
 INSERT INTO Habiter (id_adresse, id_client)
 VALUES
 (1, 1),
