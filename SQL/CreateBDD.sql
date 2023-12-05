@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS appartenir;
 DROP TABLE IF EXISTS habiter;
 
 DROP TABLE IF EXISTS Historique_prix;
-DROP TABLE IF EXISTS Produits;
+DROP TABLE IF EXISTS Produit;
 DROP TABLE IF EXISTS Personnel;
 
 DROP TABLE IF EXISTS Paiement;
@@ -24,7 +24,7 @@ CREATE TABLE Client(
    PRIMARY KEY(id_client)
 );
 
-CREATE TABLE Produits(
+CREATE TABLE Produit(
    id_produit INT,
    nom_produit VARCHAR(50),
    ref_produit VARCHAR(50),
@@ -103,7 +103,7 @@ CREATE TABLE Historique_prix(
    date_article DATE,
    id_produit INT NOT NULL,
    PRIMARY KEY(id_historique),
-   FOREIGN KEY(id_produit) REFERENCES Produits(id_produit)
+   FOREIGN KEY(id_produit) REFERENCES Produit(id_produit)
 );
 
 CREATE TABLE habiter(
@@ -119,5 +119,5 @@ CREATE TABLE appartenir(
    id_produit INT,
    PRIMARY KEY(id_commande, id_produit),
    FOREIGN KEY(id_commande) REFERENCES Commande(id_commande),
-   FOREIGN KEY(id_produit) REFERENCES Produits(id_produit)
+   FOREIGN KEY(id_produit) REFERENCES Produit(id_produit)
 );
