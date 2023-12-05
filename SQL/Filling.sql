@@ -1,4 +1,4 @@
--- Fill Client
+-- Fill Client 1
 INSERT INTO Client (id_client, nom_client, prenom_client, date_naissance)
 VALUES
 (1, 'Tremblay', 'Camille', '1992-03-14'),
@@ -23,33 +23,33 @@ VALUES
 (20, 'Dumont', 'Anna', '1996-12-24');
 
 
--- Fill Paiement
-INSERT INTO paiement (id_paiement, date_paiement, moyen_paiement, date_reglement, id_client)
+-- Fill Paiement 10
+INSERT INTO paiement (id_paiement, date_paiement, moyen_paiement, id_adresse, id_commande)
 VALUES
-(1, '2022-12-24', 'Carte', '2022-12-26', 5),
-(2, '2023-02-07', 'Carte', '2023-02-09', 6),
-(3, '2023-03-02', 'Carte', '2023-03-04', 7),
-(4, '2023-03-28', 'Carte', '2023-03-30', 2),
-(5, '2023-05-12', 'Espèces', '2023-05-12', 1),
-(6, '2023-06-22', 'Espèces', '2023-06-22', 3),
-(7, '2023-06-29', 'Carte', '2023-07-01', 4),
-(8, '2023-08-14', 'Carte', '2023-08-16', 9),
-(9, '2023-09-02', 'Carte', '2023-09-04', 10), -- Vérifiez la date 2023-09-04
-(10, '2023-10-17', 'Carte', '2023-10-19', 15),
-(11, '2023-10-28', 'Chèque', '2023-10-30', 18),
-(12, '2023-12-12', 'Espèces', '2023-12-12', 16),
-(13, '2023-12-27', 'Carte', '2023-12-29', 17),
-(14, '2024-02-06', 'Carte', '2024-02-08', 19),
-(15, '2024-03-02', 'Carte', '2024-03-04', 20),
-(16, '2024-04-17', 'Carte', '2024-04-19', 13),
-(17, '2024-05-28', 'Carte', '2024-05-30', 14),
-(18, '2024-07-12', 'Chèque', '2024-07-14', 11),
-(19, '2024-08-22', 'Espèces', '2024-08-22', 12),
-(20, '2024-10-07', 'Espèces', '2024-10-07', 8);
+(1, '2022-12-24', 'Carte', 24, 'Cmd001'),
+(2, '2023-02-07', 'Carte', 28, 'Cmd002'),
+(3, '2023-03-02', 'Carte', 31, 'Cmd003'),
+(4, '2023-03-28', 'Carte', 29, 'Cmd004'),
+(5, '2023-05-12', 'Espèces', 21, 'Cmd005'),
+(6, '2023-06-22', 'Espèces', 25, 'Cmd006'),
+(7, '2023-06-29', 'Carte', 35, 'Cmd007'),
+(8, '2023-08-14', 'Carte', 40, 'Cmd008'),
+(9, '2023-09-02', 'Carte', 22, 'Cmd009'), 
+(10, '2023-10-17', 'Carte', 26, 'Cmd010'),
+(11, '2023-10-28', 'Chèque', 23, 'Cmd011'),
+(12, '2023-12-12', 'Espèces', 39, 'Cmd012'),
+(13, '2023-12-27', 'Carte', 37, 'Cmd013'),
+(14, '2024-02-06', 'Carte', 34, 'Cmd014'),
+(15, '2024-03-02', 'Carte', 38, 'Cmd015'),
+(16, '2024-04-17', 'Carte', 27, 'Cmd016'),
+(17, '2024-05-28', 'Carte', 30, 'Cmd017'),
+(18, '2024-07-12', 'Chèque', 33, 'Cmd018'),
+(19, '2024-08-22', 'Espèces', 32, 'Cmd019'),
+(20, '2024-10-07', 'Espèces', 36, 'Cmd020');
 
 
--- Fill Stock
-INSERT INTO Stock (id_produit, nom_produit, ref_produit, designation, quantite, seuil_reappro, taux_tva)
+-- Fill Stock 2
+INSERT INTO Produit (id_produit, nom_produit, ref_produit, designation, quantite, seuil_reappro, taux_tva)
 VALUES
 (1, 'Résistances électriques', 'RES-2022', 'RES-PRO-2022', 15, 5, 20),
 (2, 'Condensateurs électrolytiques', 'CAP-4567', 'CAP-ELEC-4567', 12, 5, 20),
@@ -73,7 +73,7 @@ VALUES
 (20, 'Convertisseurs de tension', 'CONVERTER-5678', 'VOLT-CONVERTER-5678', 14, 5, 20);
 
 
--- Fill Pays
+-- Fill Pays 3
 INSERT INTO pays (id_pays, nom_pays)
 VALUES
 (1, 'Allemagne'),
@@ -105,7 +105,7 @@ VALUES
 (27, 'Chypre');
 
 
--- Fill Ville
+-- Fill Ville 4
 INSERT INTO Ville (id_ville, nom_ville, code_postal, id_pays)
 VALUES
 (1, 'Rouen', '76000',10),
@@ -130,52 +130,53 @@ VALUES
 (20, 'Yvetot', '76190',10); 
 
 
--- Fill Adresse
-INSERT INTO Adresse (id_adresse, nom_adresse, livraison, facturation, id_ville)
+-- Fill Adresse 5
+INSERT INTO Adresse (id_adresse, nom_adresse, id_ville)
 VALUES
-(1, '15 Rue Victor Hugo', 1, 1, 1),
-(2, '14 Rue du Maréchal Foch', 1, 1, 9),
-(3, '51 Avenue Jean Rondeaux', 1, 1, 5),
-(4, '17 Rue des Martyrs de la Résistance', 1, 1, 16),
-(5, '8 Rue des Martyrs', 1, 1, 12),
-(6, '11 Rue du Général Leclerc', 1, 1, 14),
-(7, '30 Rue Pierre Brossolette', 1, 1, 19),
-(8, '7 Avenue des Canadiens', 1, 1, 2),
-(9, '19 Rue de la Petite Savate', 1, 1, 11),
-(10, '5 Rue des Moulins', 1, 1, 18),
-(11, '32 Rue Gustave Flaubert', 1, 1, 3),
-(12, '28 Rue de la République', 1, 1, 7),
-(13, '9 Rue du Docteur Léon Colas', 1, 1, 4),
-(14, '25 Avenue de Caen', 1, 1, 13),
-(15, '6 Place du Général de Gaulle', 1, 1, 8),
-(16, '12 Rue des Martyrs de la Résistance', 1, 1, 6),
-(17, '22 Rue Georges Braque', 1, 1, 17),
-(18, '4 Place de l Hôtel de Ville', 1, 1, 15),
-(19, '10 Rue Saint-Julien', 1, 1, 20),
-(20, '3 Boulevard Stanislas-Girardin', 1, 1, 10),
-(21, '9 Rue de l Église', 1, 1, 19),
-(22, '29 Rue Victor Hugo', 1, 1, 14),
-(23, '8 Rue des Roses', 1, 1, 4),
-(24, '7 Rue Voltaire', 1, 1, 9),
-(25, '11 Rue de la Paix', 1, 1, 8),
-(26, '22 Rue Pasteur', 1, 1, 11),
-(27, '6 Rue Jeanne d Arc', 1, 1, 1),
-(28, '4 Rue des Tilleuls', 1, 1, 17),
-(29, '14 Rue Victorine Magne', 1, 1, 6),
-(30, '13 Rue du Commerce', 1, 1, 15),
-(31, '42 Rue des Canadiens', 1, 1, 2),
-(32, '18 Rue du Stade', 1, 1, 16),
-(33, '25 Rue de la Liberté', 1, 1, 5),
-(34, '10 Rue des Cerisiers', 1, 1, 12),
-(35, '17 Avenue Jean Jaurès', 1, 1, 3),
-(36, '5 Rue du Moulin', 1, 1, 13),
-(37, '19 Rue des Lilas', 1, 1, 10),
-(38, '12 Rue du Maréchal Foch', 1, 1, 20),
-(39, '4 Rue des Tilleuls', 1, 1, 17),
-(40, '3 Avenue Gambetta', 1, 1, 7);
+(1, '15 Rue Victor Hugo', 1),
+(2, '14 Rue du Maréchal Foch', 9),
+(3, '51 Avenue Jean Rondeaux', 5),
+(4, '17 Rue des Martyrs de la Résistance', 16),
+(5, '8 Rue des Martyrs', 12),
+(6, '11 Rue du Général Leclerc', 14),
+(7, '30 Rue Pierre Brossolette', 19),
+(8, '7 Avenue des Canadiens', 2),
+(9, '19 Rue de la Petite Savate', 11),
+(10, '5 Rue des Moulins', 18),
+(11, '32 Rue Gustave Flaubert', 3),
+(12, '28 Rue de la République', 7),
+(13, '9 Rue du Docteur Léon Colas', 4),
+(14, '25 Avenue de Caen', 13),
+(15, '6 Place du Général de Gaulle', 8),
+(16, '12 Rue des Martyrs de la Résistance', 6),
+(17, '22 Rue Georges Braque', 17),
+(18, '4 Place de l Hôtel de Ville', 15),
+(19, '10 Rue Saint-Julien', 20),
+(20, '3 Boulevard Stanislas-Girardin', 10),
+(21, '9 Rue de l Église', 19),
+(22, '29 Rue Victor Hugo', 14),
+(23, '8 Rue des Roses', 4),
+(24, '7 Rue Voltaire', 9),
+(25, '11 Rue de la Paix', 8),
+(26, '22 Rue Pasteur', 11),
+(27, '6 Rue Jeanne d Arc', 1),
+(28, '4 Rue des Tilleuls', 17),
+(29, '14 Rue Victorine Magne', 6),
+(30, '13 Rue du Commerce', 15),
+(31, '42 Rue des Canadiens', 2),
+(32, '18 Rue du Stade', 16),
+(33, '25 Rue de la Liberté', 5),
+(34, '10 Rue des Cerisiers', 12),
+(35, '17 Avenue Jean Jaurès', 3),
+(36, '5 Rue du Moulin', 13),
+(37, '19 Rue des Lilas', 10),
+(38, '12 Rue du Maréchal Foch', 20),
+(39, '4 Rue des Tilleuls', 17),
+(40, '3 Avenue Gambetta', 7);
 
 
--- Fill Personnel
+
+-- Fill Personnel 7
 INSERT INTO Personnel (id_personnel, nom_personnel, prenom_personnel, superieur_personnel, date_embauche, id_adresse)
 VALUES
 (1, 'Dubois', 'Martin', 'Camille', '2012-05-11', 5),
@@ -200,32 +201,32 @@ VALUES
 (20, 'Chevalier', 'Camille', NULL, '2012-05-11', 1);
 
 
--- Fill Commande
-INSERT INTO Commande (id_commande, date_emission, date_livraison, quantite_article, total_article, total_ht, total_tva, total_ttc, id_paiement, id_client)
+-- Fill Commande 9
+INSERT INTO Commande (id_commande, date_emission, date_livraison, quantite_article, total_article, total_ht, total_tva, total_ttc, id_adresse, id_client)
 VALUES
-(1, '2022-12-25', '2023-01-01', 9, 180, 180, 36, 216, 1, 5),
-(2, '2023-02-08', '2023-02-15', 5, 7.5, 7.5, 1.5, 9, 2, 6),
-(3, '2023-03-03', '2023-03-10', 14, 18.9, 18.9, 3.78, 22.68, 3, 7),
-(4, '2023-03-29', '2023-04-05', 2, 24, 24, 4.8, 28.8, 4, 2),
-(5, '2023-05-13', '2023-05-20', 11, 35.75, 35.75, 7.15, 42.9, 5, 1),
-(6, '2023-06-23', '2023-06-30', 7, 3.5, 3.5, 0.7, 4.2, 6, 3),
-(7, '2023-06-30', '2023-07-07', 3, 45, 45, 9, 54, 7, 4),
-(8, '2023-08-15', '2023-08-22', 13, 286, 286, 57.2, 343.2, 8, 9),
-(9, '2023-09-03', '2023-09-10', 6, 102, 102, 20.4, 122.4, 9, 10),
-(10, '2023-10-18', '2023-10-25', 8, 600, 600, 120, 720, 10, 15),
-(11, '2023-10-29', '2023-11-05', 1, 0.25, 0.25, 0.05, 0.3, 11, 18),
-(12, '2023-12-13', '2023-12-20', 12, 48, 48, 9.6, 57.6, 12, 16),
-(13, '2023-12-28', '2024-01-04', 4, 160, 160, 32, 192, 13, 17),
-(14, '2024-02-07', '2024-02-14', 10, 400, 400, 80, 480, 14, 19),
-(15, '2024-03-03', '2024-03-10', 15, 15, 15, 3, 18, 15, 20),
-(16, '2024-04-18', '2024-04-25', 7, 42, 42, 8.4, 50.4, 16, 13),
-(17, '2024-05-29', '2024-06-05', 11, 110, 110, 22, 132, 17, 14),
-(18, '2024-07-13', '2024-07-20', 3, 12, 12, 2.4, 14.4, 18, 11),
-(19, '2024-08-23', '2024-08-30', 6, 9, 9, 1.8, 10.8, 19, 12),
-(20, '2024-10-08', '2024-10-15', 2, 28, 28, 5.6, 33.6, 20, 8);
+('Cmd001', '2022-12-25', '2023-01-01', 9, 180, 180, 36, 216, 24, 5),
+('Cmd002', '2023-02-08', '2023-02-15', 5, 7.5, 7.5, 1.5, 9, 28, 6),
+('Cmd003', '2023-03-03', '2023-03-10', 14, 18.9, 18.9, 3.78, 22.68, 31, 7),
+('Cmd004', '2023-03-29', '2023-04-05', 2, 24, 24, 4.8, 28.8, 29, 2),
+('Cmd005', '2023-05-13', '2023-05-20', 11, 35.75, 35.75, 7.15, 42.9, 21, 1),
+('Cmd006', '2023-06-23', '2023-06-30', 7, 3.5, 3.5, 0.7, 4.2, 25, 3),
+('Cmd007', '2023-06-30', '2023-07-07', 3, 45, 45, 9, 54, 35, 4),
+('Cmd008', '2023-08-15', '2023-08-22', 13, 286, 286, 57.2, 343.2, 40, 9),
+('Cmd009', '2023-09-03', '2023-09-10', 6, 102, 102, 20.4, 122.4, 22, 10),
+('Cmd010', '2023-10-18', '2023-10-25', 8, 600, 600, 120, 720, 26, 15),
+('Cmd011', '2023-10-29', '2023-11-05', 1, 0.25, 0.25, 0.05, 0.3, 23, 18),
+('Cmd012', '2023-12-13', '2023-12-20', 12, 48, 48, 9.6, 57.6, 39, 16),
+('Cmd013', '2023-12-28', '2024-01-04', 4, 160, 160, 32, 192, 37, 17),
+('Cmd014', '2024-02-07', '2024-02-14', 10, 400, 400, 80, 480, 34, 19),
+('Cmd015', '2024-03-03', '2024-03-10', 15, 15, 15, 3, 18, 38, 20),
+('Cmd016', '2024-04-18', '2024-04-25', 7, 42, 42, 8.4, 50.4, 27, 13),
+('Cmd017', '2024-05-29', '2024-06-05', 11, 110, 110, 22, 132, 30, 14),
+('Cmd018', '2024-07-13', '2024-07-20', 3, 12, 12, 2.4, 14.4, 33, 11),
+('Cmd019', '2024-08-23', '2024-08-30', 6, 9, 9, 1.8, 10.8, 32, 12),
+('Cmd020', '2024-10-08', '2024-10-15', 2, 28, 28, 5.6, 33.6, 36, 8);
 
 
--- Fill Historique_prix
+-- Fill Historique_prix 8
 INSERT INTO Historique_prix (id_historique, id_produit, prix_article, date_article)
 VALUES
 (1, 1, 0.25, '2022-12-01'),
@@ -253,26 +254,26 @@ VALUES
 -- Fill Appartenire (Table intermédiaire entre Commande et Catalogue)
 INSERT INTO appartenir (id_commande, id_produit)
 VALUES
-(1, 18),
-(2, 2),
-(3, 4),
-(4, 15),
-(5, 6),
-(6, 3),
-(7, 16),
-(8, 19),
-(9, 20),
-(10, 11),
-(11, 1),
-(12, 5),
-(13, 9),
-(14, 10),
-(15, 7),
-(16, 17),
-(17, 8),
-(18, 13),
-(19, 12),
-(20, 14);
+('Cmd001', 18),
+('Cmd002', 2),
+('Cmd003', 4),
+('Cmd004', 15),
+('Cmd005', 6),
+('Cmd006', 3),
+('Cmd007', 16),
+('Cmd008', 19),
+('Cmd009', 20),
+('Cmd010', 11),
+('Cmd011', 1),
+('Cmd012', 5),
+('Cmd013', 9),
+('Cmd014', 10),
+('Cmd015', 7),
+('Cmd016', 17),
+('Cmd017', 8),
+('Cmd018', 13),
+('Cmd019', 12),
+('Cmd020', 14);
 
 
 -- Fill  Habiter (Table intermédiaire entre Adresse et Client)
