@@ -109,7 +109,7 @@ CREATE TABLE Historique_prix(
 CREATE TABLE habiter(
    id_adresse INT,
    id_client INT,
-   PRIMARY KEY(id_adresse, id_client),
+   --PRIMARY KEY(id_adresse, id_client),
    FOREIGN KEY(id_adresse) REFERENCES Adresse(id_adresse),
    FOREIGN KEY(id_client) REFERENCES Client(id_client)
 );
@@ -117,7 +117,7 @@ CREATE TABLE habiter(
 CREATE TABLE appartenir(
    id_commande VARCHAR(50),
    id_produit INT,
-   PRIMARY KEY(id_commande, id_produit),
+   --PRIMARY KEY(id_commande, id_produit),
    FOREIGN KEY(id_commande) REFERENCES Commande(id_commande),
    FOREIGN KEY(id_produit) REFERENCES Produit(id_produit)
 );
