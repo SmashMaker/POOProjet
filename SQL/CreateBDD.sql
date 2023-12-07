@@ -15,8 +15,6 @@ DROP TABLE IF EXISTS Ville;
 DROP TABLE IF EXISTS Pays;
 
 
-USE PRojet_POO;
-
 
 -- #### Création des tables ####
 CREATE TABLE Client(
