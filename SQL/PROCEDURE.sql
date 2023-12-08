@@ -94,6 +94,10 @@ EXEC TopVente @Nb = 10, @Ordre = 0;
 
 
 -- Calculer la valeur d’achat du stock
+CREATE OR ALTER PROCEDURE ValeurAchatStock
+AS
+BEGIN
+END
 -- #######################################
 -- #######################################
 -- ############### TO DO #################
@@ -102,6 +106,10 @@ EXEC TopVente @Nb = 10, @Ordre = 0;
 
 
 --Afficher les anniversaires des clients d'aujourd'hui
+CREATE OR ALTER PROCEDURE AnniversaireClient
+AS
+BEGIN
+END
 -- #######################################
 -- #######################################
 -- ############### TO DO #################
@@ -110,6 +118,10 @@ EXEC TopVente @Nb = 10, @Ordre = 0;
 
 
 -- Afficher les anniversaires des inscriptions d'aujourd'hui
+CREATE OR ALTER PROCEDURE AnniversaireInscription
+AS
+BEGIN
+END
 -- #######################################
 -- #######################################
 -- ############### TO DO #################
