@@ -1,3 +1,23 @@
+-- Donne le prix actuel d'un article
+CREATE OR ALTER VIEW prix_actuel
+AS
+SELECT Historique_prix.id_produit, Historique_prix.prix_article FROM (
+	SELECT id_produit, MAX(date_article) as date_actuelle FROM Historique_prix
+	GROUP BY id_produit
+	) date_prix_actuel
+LEFT JOIN Historique_prix ON Historique_prix.id_produit = date_prix_actuel.id_produit AND Historique_prix.date_article = date_prix_actuel.date_actuelle;
+
+
+-- Donne les dernières adresses de livraison utilisées
+CREATE OR ALTER VIEW DerniereAdresseLivraison
+AS
+SELECT Commande.id_client, Commande.id_adresse FROM Commande
+INNER JOIN (
+	SELECT id_client, MAX(date_livraison) AS last_delivery_date
+    FROM Commande
+    GROUP BY id_client) last_addresss ON last_addresss.id_client = Commande.id_client AND last_addresss.last_delivery_date = Commande.date_livraison;
+
+
 -- Panier Moyen
 CREATE OR ALTER PROCEDURE PanierMoyen
 AS
@@ -85,36 +105,52 @@ END
 EXEC TopVente @Nb = 10, @Ordre = 0;
 
 
--- Calculer la valeur commerciale du stock
--- #######################################
--- #######################################
--- ############### TO DO #################
--- #######################################
--- #######################################
+-- Calculer la valeur commerciale du stock (TTC)
+CREATE OR ALTER PROCEDURE ValeurCommercialeStock
+AS
+BEGIN
+	SELECT ROUND(CAST(SUM(Produit.quantite*prix_actuel.prix_article*(1+(Produit.taux_tva/100)) ) AS DECIMAL(38,2)), 2)
+	FROM Produit
+	LEFT JOIN prix_actuel ON prix_actuel.id_produit = Produit.id_produit;
+END
+
+EXEC ValeurCommercialeStock;
 
 
--- Calculer la valeur d’achat du stock
+-- Calculer la valeur d’achat du stock (HT)
 CREATE OR ALTER PROCEDURE ValeurAchatStock
 AS
 BEGIN
+	SELECT SUM(Produit.quantite*prix_actuel.prix_article) FROM Produit
+	LEFT JOIN prix_actuel ON prix_actuel.id_produit = Produit.id_produit;
 END
--- #######################################
--- #######################################
--- ############### TO DO #################
--- #######################################
--- #######################################
+
+EXEC ValeurAchatStock
 
 
 --Afficher les anniversaires des clients d'aujourd'hui
 CREATE OR ALTER PROCEDURE AnniversaireClient
 AS
 BEGIN
+	SELECT 
+	Client.date_naissance,
+	Client.id_client,
+	Client.nom_client,
+	Client.prenom_client,
+	Adresse.nom_adresse,
+	Ville.nom_ville,
+	Pays.nom_pays
+FROM Client
+LEFT JOIN DerniereAdresseLivraison AS last_address ON last_address.id_client = Client.id_client
+LEFT JOIN Adresse ON Adresse.id_adresse = last_address.id_adresse
+LEFT JOIN Ville ON Ville.id_ville = Adresse.id_ville
+LEFT JOIN Pays ON Pays.id_pays = Ville.id_pays
+WHERE MONTH(Client.date_naissance) = MONTH(GETDATE())
+AND DAY(Client.date_naissance) = DAY(GETDATE())
+AND Adresse.nom_adresse IS NOT NULL
+ORDER BY id_client;
 END
--- #######################################
--- #######################################
--- ############### TO DO #################
--- #######################################
--- #######################################
+
 
 
 -- Afficher les anniversaires des inscriptions d'aujourd'hui
