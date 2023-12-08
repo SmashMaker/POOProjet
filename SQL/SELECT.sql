@@ -47,27 +47,27 @@ RIGHT JOIN Produit ON Produit.id_produit = appartenir.id_produit
 GROUP BY Produit.id_produit, Produit.nom_produit, Produit.ref_produit
 ORDER BY Quantite_vendu ASC;
 
+-- Donne le prix actuel d'un article
+GO
+CREATE OR ALTER VIEW prix_actuel
+AS
+SELECT Historique_prix.id_produit, Historique_prix.prix_article FROM (
+	SELECT id_produit, MAX(date_article) as date_actuelle FROM Historique_prix
+	GROUP BY id_produit
+	) date_prix_actuel
+LEFT JOIN Historique_prix ON Historique_prix.id_produit = date_prix_actuel.id_produit AND Historique_prix.date_article = date_prix_actuel.date_actuelle;
 
--- Calculer la valeur commerciale du stock
--- #######################################
--- #######################################
--- ############### TO DO #################
--- #######################################
--- #######################################
+GO
+
+-- Calculer la valeur commerciale du stock (prix TTC)
+SELECT ROUND( CAST( SUM(Produit.quantite*prix_actuel.prix_article*(1+(Produit.taux_tva/100)) ) AS DECIMAL(38,2) 0) , 2)
+FROM Produit
+LEFT JOIN prix_actuel ON prix_actuel.id_produit = Produit.id_produit;
 
 
--- Calculer la valeur d’achat du stock
-SELECT SUM(hp.prix_article*Produit.quantite) AS Valeur_Stock 
-FROM (
-	-- Sous requêtes qui donne le prix actuel de chaque article
-	SELECT 
-		hp.id_produit,
-		hp.prix_article,
-		MAX(hp.date_article) AS date_prix_actuel
-	FROM Historique_prix hp
-	GROUP BY hp.id_produit, hp.prix_article) hp
-LEFT JOIN Produit ON Produit.id_produit = hp.id_produit;
-
+-- Calculer la valeur d’achat du stock (prix HT)
+SELECT SUM(Produit.quantite*prix_actuel.prix_article) FROM Produit
+LEFT JOIN prix_actuel ON prix_actuel.id_produit = Produit.id_produit;
 
 --Afficher les anniversaires des clients d'aujourd'hui
 SELECT 
