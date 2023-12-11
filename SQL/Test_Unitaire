@@ -1,4 +1,4 @@
-//Test_Unitaire
+//Test_Unitaire, ayant d'abord essayé sur C# nous sommes passés sur un simple main() en C++ car le C# ne fonctionnait pas.
 
 int main() {
     NS_Comp_Mappage::Mappage^ mapper = gcnew NS_Comp_Mappage::Mappage();
