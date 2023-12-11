@@ -1,0 +1,5 @@
+C:\Users\ugodr\source\repos\Projet\Projet\x64\Debug\Projet.vcxproj.AssemblyReference.cache
+C:\Users\ugodr\source\repos\Projet\Projet\x64\Debug\Projet.MyForm.resources
+C:\Users\ugodr\source\repos\Projet\Projet\x64\Debug\Projet.vcxproj.GenerateResource.cache
+C:\Users\ugodr\source\repos\Projet\Projet\x64\Debug\Projet.MyFormGestion.resources
+C:\Users\ugodr\source\repos\Projet\Projet\x64\Debug\Projet.MyFormStats.resources
