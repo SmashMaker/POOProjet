@@ -18,7 +18,7 @@ DROP TABLE IF EXISTS Pays;
 
 -- #### Création des tables ####
 CREATE TABLE Client(
-   id_client INT IDENTITY(1,1),
+   id_client INT IDENTITY(0,1),
    nom_client VARCHAR(50),
    prenom_client VARCHAR(50),
    date_naissance DATE,
@@ -26,7 +26,7 @@ CREATE TABLE Client(
 );
 
 CREATE TABLE Produit(
-   id_produit INT IDENTITY(1,1),
+   id_produit INT IDENTITY(0,1),
    nom_produit VARCHAR(50),
    ref_produit VARCHAR(50),
    designation VARCHAR(50),
@@ -37,13 +37,13 @@ CREATE TABLE Produit(
 );
 
 CREATE TABLE Pays(
-   id_pays INT IDENTITY(1,1),
+   id_pays INT IDENTITY(0,1),
    nom_pays VARCHAR(50),
    PRIMARY KEY(id_pays)
 );
 
 CREATE TABLE Ville(
-   id_ville INT IDENTITY(1,1),
+   id_ville INT IDENTITY(0,1),
    nom_ville VARCHAR(50),
    code_postal VARCHAR(10),
    id_pays INT NOT NULL,
@@ -52,7 +52,7 @@ CREATE TABLE Ville(
 );
 
 CREATE TABLE Adresse(
-   id_adresse INT IDENTITY(1,1),
+   id_adresse INT IDENTITY(0,1),
    nom_adresse VARCHAR(50),
    id_ville INT NOT NULL,
    PRIMARY KEY(id_adresse),
@@ -60,7 +60,7 @@ CREATE TABLE Adresse(
 );
 
 CREATE TABLE Personnel(
-   id_personnel INT IDENTITY(1,1),
+   id_personnel INT IDENTITY(0,1),
    nom_personnel VARCHAR(50),
    prenom_personnel VARCHAR(50),
    superieur_personnel VARCHAR(50),
@@ -122,3 +122,13 @@ CREATE TABLE appartenir(
    FOREIGN KEY(id_commande) REFERENCES Commande(id_commande),
    FOREIGN KEY(id_produit) REFERENCES Produit(id_produit)
 );
+
+
+-- Ajout des item supprimés
+INSERT INTO Pays (nom_pays) VALUES ('Deleted');
+INSERT INTO Ville (nom_ville, id_pays) VALUES ('Deleted', 0);
+INSERT INTO Adresse (nom_adresse, id_ville) VALUES ('Deleted', 0);
+INSERT INTO Client (nom_client, prenom_client) VALUES ('Deleted', 'Deleted');
+INSERT INTO habiter(id_adresse, id_client) VALUES (0, 0);
+INSERT INTO Produit (nom_produit) VALUES ('Deleted'); --
+INSERT INTO Personnel (nom_personnel, prenom_personnel, id_adresse) VALUES ('Deleted', 'Deleted', 0); --
