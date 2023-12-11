@@ -1,0 +1,5 @@
+﻿  Main.cpp
+C:\Users\ugodr\source\repos\Projet\Projet\Main.cpp(15,15): error C2731: 'WinMain' : impossible de surcharger la fonction
+  C:\Users\ugodr\source\repos\Projet\Projet\Main.cpp(15,15):
+  voir la déclaration de 'WinMain'
+  
