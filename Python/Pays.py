@@ -1,0 +1,31 @@
+def get_pays():
+    pays = [
+        [1, 'Allemagne'],
+        [2, 'Autriche'],
+        [3, 'Belgique'],
+        [4, 'Bulgarie'],
+        [5, 'Croatie'],
+        [6, 'Danemark'],
+        [7, 'Espagne'],
+        [8, 'Estonie'],
+        [9, 'Finlande'],
+        [10, 'France'],
+        [11, 'Grèce'],
+        [12, 'Hongrie'],
+        [13, 'Irlande'],
+        [14, 'Italie'],
+        [15, 'Lettonie'],
+        [16, 'Lituanie'],
+        [17, 'Luxembourg'],
+        [18, 'Malte'],
+        [19, 'Pays-Bas'],
+        [20, 'Pologne'],
+        [21, 'Portugal'],
+        [22, 'République tchèque'],
+        [23, 'Roumanie'],
+        [24, 'Slovaquie'],
+        [25, 'Slovénie'],
+        [26, 'Suède'],
+        [27, 'Chypre']
+    ]
+    return pays
